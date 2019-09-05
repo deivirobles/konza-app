@@ -21,6 +21,7 @@ export default class ProjectList extends Component {
   render() {
     const { projects } = this.state;
     const { onSelected, selected } = this.props;
+    console.log(projects);
 
     return (
       <List 
