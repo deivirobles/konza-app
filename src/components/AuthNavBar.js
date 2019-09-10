@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react'
 import { NavLink } from "react-router-dom";
+import UserContext from "./UserContext";
 
-export default function AuthNavBar({ user }) {
+export default function AuthNavBar() {
   return (
     <Fragment>
-      { user
+      <UserContext.Consumer>
+      { ({ user }) => user
         ? (
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -27,7 +29,9 @@ export default function AuthNavBar({ user }) {
             </li>
           </ul>
         )
+          
       }
+      </UserContext.Consumer>
     </Fragment>
   )
 }

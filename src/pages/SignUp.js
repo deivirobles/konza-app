@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import config from "./../config.json";
 import http from "./../services/http";
 import { setToken } from "../services/auth";
+import UserContext from "./../components/UserContext";
 
 export default class Signin extends Component {
+  static contextType = UserContext;
+
   handleClick = async (e) => {
     e.preventDefault();
     const [firstname, lastname, profilePhoto, email, password] = e.target.elements;
@@ -17,7 +20,7 @@ export default class Signin extends Component {
     try {
       const { data: { data, meta: { token }} } = await http.post(`${config.baseUrl}/users/signup`, payload);
       setToken(token);
-      this.props.setUser(data);
+      this.context.setUser(data);
       this.props.history.push("/");
     } catch (err) {
       console.error(err);

@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { removeToken } from "../services/auth";
-import { Redirect } from "react-router-dom";
+import UserContext from "./../components/UserContext";
 
-export default function SignOut({ clearUser }) {
-  removeToken();
-  clearUser();
+export default class SignOut extends Component {
+  static contextType = UserContext;
 
-  return (
-    <Redirect to="/" />
-  )
+  componentDidMount() {
+    removeToken();
+    this.context.clearUser();
+    this.props.history.push("/");
+  }
+
+  render () {
+    return <div />
+  }
 }

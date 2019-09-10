@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import AuthNavBar from './AuthNavBar';
 
-export default function NavBar({ user }) {
+export default function NavBar() {
   return (
     <nav 
       className="navbar navbar-expand-lg navbar-light bg-light"
@@ -25,7 +25,7 @@ export default function NavBar({ user }) {
             <NavLink to="/users" className="nav-link">Users</NavLink>
           </li>
         </ul>
-        <AuthNavBar user={user} />
+        <AuthNavBar />
       </div>
     </nav>
   )
